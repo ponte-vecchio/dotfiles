@@ -1,0 +1,146 @@
+## NANORC WRITTEN BY JEVGENI KHAGANOV FROM SCRATCH
+##
+## FLAGS: set and unset
+##
+## NOTES:
+##
+##    1. Nano reads only one command line at a time.
+##
+##    2. All commands and keywords must be written in __lowercase__.
+##
+##    3. Options set in .nanorc override nano's defaults.
+##
+##    4. Options with no args are unset by default.
+##
+##        4a. Thus, unset commands are only needed when in need of overriding a setting of the system's nanorc file with your custom nanorc file.
+##
+##        4b. Options that take in args therefore cannot be unset.
+##
+##    5. Quote inside the char parameters should not be escaped.
+##
+##        5a. The last double quote on the line will be seen as the closing quote.
+##
+##
+## COMMANDS AND ARGUMENTS
+## (1) Make Ctrl+R and Ctrl+Del stop at word ends instead of beginnings.
+#  set afterends
+
+## (2) Allow the backup to succeed even if its permissions cannot be (re)set due to special OS considerations. (Default: unset)
+#  set allow_insecure_backup
+
+## (3) Indent a newly created line to the same number of tabs/spaces as the previous line automatically.
+set autoindent
+
+## (4) When saving a file, create a backup file by adding a tilde (~) to the file's name.
+# set backup
+
+## (5) Make and keep a uniquely numbered backup every time a file is saved -- Must have (4) set.
+# set backupdir *directory*
+
+## (6) Use bold instead of reverse for the following bars:
+##     a. title bar;
+##     b. status bar;
+##     c. key combos;
+##     d. function tags;
+##     e. line numbers and;
+##     f. selected text.
+##
+## This will be overridden by setting the following options:
+##     a. titlecolor;
+##     b. statuscolor;
+##     c. keycolor;
+##     d. functioncolor;
+##     e. numbercolor and;
+##     f. selectedcolor.
+# set boldtext
+
+## (7) When justifying, treat any line that starts with whitespace as the beginning of a paragraph, unless (3) is set.
+# set bookstyle
+
+## (8) Set the characters treated as closing brackets when justifying paragraphs.
+##     This may not include blank characters. ( Default: ""')>]}" ).
+# set brackets "characters"
+
+## (9) Hard-wrap the current line if it overflows.
+# set breaklonglines
+
+## (10) Perform case-sensitive searches by default.
+# set casesensitive
+
+## (11) Constantly display the cursor position in the status bar. Overrides the option quickblank.
+# set constantshow
+
+## (12) Use cut-from-cursor-to-end-of-line by default in lieu of cutting the whole line.
+# set cutfromcursor
+
+## (13) Do not use the lien below the titlebar, leaving it entirely blank.
+# set emptyline
+
+## (14) Use a custom colour combination for the status bar when an error message is displayed. ( Default; brightwhite, red ).
+# set errorcolor [bold][italic]fgcolor, bgcolor
+
+## (15) Set the target width for justifying and automatic hard-wrapping at n number of columns. If the value is <=0, wrapping will occur at the width of the screen minus n columns, allowing the wrap point to vary along with the width of the screen should screen be resized. ( Default: -8 )
+# set fill n
+
+## (16) Use a custom colour combination for the concise function descriptions in the two help lines at the bottom of the screen. See also:
+# set functioncolor [bold][italic]fgcolor, bgcolor
+
+## (17) Draw a vertical stripe at the given column to help judge the width of the text. (The color of the stripe can be changed with set stripecolor.)
+# set guidestripe 79
+
+## (18) Save the last 100 search & replacement strings as well as executed commands.
+# set historylog
+
+## (19) Display a scrollbar on the righthand side of the editor. It will show the position of the viewport in the buffer and how much of the buffer is covered by the viewport.
+set indicator
+
+## (20) Scroll the buffer contents per half-screen instead of per line.
+# set jumpyscrolling
+
+## (21) Use a custom colour combination for the shortcut key combos in the two help lines at the bottom of the screen.
+# set keycolor [bold][italic]fgcolor, bgcolor
+
+## (22) Display line numbers to the left of the text area.
+set linenumbers
+
+## (23) Enable Vim-style lock-files for when editing files.
+# set locking
+
+## (24) Use libgamic to determine the applicable syntax if the file name or the first line of the file are too ambiguous to determine an applicable syntax. ( Default: unset )
+# set magic
+
+## (25) Specify the opening and closing brackets that can be found by bracket searches. This does not include blank characters. The opening set must come before the closing set, and the two sets must be in the same order. ( Default: "(<[{)>]}" )
+# set matchbrackets "characters"
+
+## (26) Enable the minibar which:
+##     a. Supresses the title bar and shows information about the current buffer at the bottom of the screen instead;  
+##     b. Filename shown on the left, followed by * if the buffer has been modified;
+##     c. Current line and column numbers are shown on the right.
+# set minibar
+
+## (27) Use a custom colour combination for the minibar. 
+# set minicolor [bold][italic]fgcolor, bgcolor
+
+## (28) Enable mouse support if available. If enabled, mouse clicks can be used to place the cursor, set the mark, and execute shortcuts. Text selection be done through dragging while holding down the Shift key.
+set mouse
+
+## (29) USe a tab size of n columns. The value of n must be greater than 0. ( Default: 8 )
+set tabsize 4
+
+## (30) Convert types tabs to spaces
+set tabstospaces
+
+## (31) Save a file by default in UNIX format. This overrides Nano's default behaviour of saving a file in the format that it previously had. (This option has no effect if noconvert is used.)
+set unix
+
+## (32) Set the two chars used to indicate the presence of Tabs and Spaces. They must be single-column charaters. ( Default: ">." )##
+# set whitespace "characters"
+
+set titlecolor brightred,black
+set numbercolor brightyellow,blue
+##
+## SYNTAX HIGHLIGHTING
+# include "/usr/local/share/nano/*.nanorc"
+# include "/usr/local/share/nano/extra/*.nanorc"
+include "/etc/nano/*.nanorc"
+include "/etc/nano/extra/*.nanorc"
