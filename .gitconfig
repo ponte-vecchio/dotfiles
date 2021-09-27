@@ -1,0 +1,15 @@
+[user]
+	email = 64239070+ponte-vecchio@users.noreply.github.com
+	name = ponte-vecchio
+
+[diff]
+  tool = meld
+
+[color]
+  ui = true
+
+[alias]
+  patch = apply --ignore-space-change --ignore-whitespace
+
+[init]
+  defaultBranch = master
