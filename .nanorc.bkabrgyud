@@ -140,7 +140,5 @@ set titlecolor brightred,black
 set numbercolor brightyellow,blue
 ##
 ## SYNTAX HIGHLIGHTING
-# include "/usr/local/share/nano/*.nanorc"
-# include "/usr/local/share/nano/extra/*.nanorc"
-include "/etc/nano/*.nanorc"
-include "/etc/nano/extra/*.nanorc"
+include "/usr/local/share/nano/*.nanorc"
+include "/usr/local/share/nano/extra/*.nanorc"
