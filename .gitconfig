@@ -3,7 +3,7 @@
 	name = ponte-vecchio
 
 [diff]
-  tool = meld
+  tool = vim
 
 [color]
   ui = true
