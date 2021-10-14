@@ -67,11 +67,11 @@ map <leader>l :set list!<CR>
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 " call plugins
-Plug 'tpope/vim-sensible'
-Plug 'junegunn/seoul256.vim'
-Plug 'lervag/vimtex'
-Plug 'dense-analysis/ale'
-
+Plug 'tpope/vim-sensible'     "Basic amenities for Vim
+Plug 'junegunn/seoul256.vim'  "256 Colors of Seoul
+Plug 'lervag/vimtex'          "LaTeX on Vim
+Plug 'dense-analysis/ale'     "Generic autocompletion
+Plug 'ambv/black'             "Python code formatter
 call plug#end()
 
 " ale linter selection
