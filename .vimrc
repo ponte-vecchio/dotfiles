@@ -5,9 +5,6 @@ set nocompatible
 filetype off
 filetype plugin indent on
 
-" TODO: vundle or pathogen plugins go here
-
-
 " Turn on syntax highlighting
 syntax on
 
@@ -28,11 +25,11 @@ set visualbell
 
 " Whitespacing
 set wrap
-set textwidth=79
+set textwidth=119
 set formatoptions=tcqrn1
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 set noshiftround
 
@@ -84,9 +81,19 @@ Plug 'itchyny/lightline.vim'  "Lightline
 " Python plugins
 Plug 'ambv/black'             "Black code formatter
 Plug 'tmhedberg/simpylfold'   "Code folding
+
 call plug#end()
 
-" ale linter selection
-let g:ale_linters = {
-\	'javascript': ['eslint'],
+" ALE completion config
+let g:ale_completion_enabled = 1  "default=0
+let g:ale_completion_max_suggestions = 20  "default=50
+
+" ALE linter selection
+let g:ale_fixers = {
+\ '*': ['remove_trailing_lines', 'trim_whitespace'],
+\ 'javascript': ['eslint'],
+\ 'python': ['flake8']
 \}
+
+" ALE change colour on error
+let g:ale_change_sign_column_color = 1  "default=0
