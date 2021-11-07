@@ -76,7 +76,10 @@ Plug 'junegunn/seoul256.vim'  "256 Colors of Seoul
 Plug 'joshdick/onedark.vim'   "Atom's One Dark theme
 Plug 'lervag/vimtex'          "LaTeX on Vim
 Plug 'dense-analysis/ale'     "Generic autocompletion
-Plug 'itchyny/lightline.vim'  "Lightline
+
+" QoL
+Plug 'preservim/nerdtree'     "FS Explorer for Vim
+Plug 'itchyny/lightline.vim'  "Lightline↵
 
 " Python plugins
 Plug 'ambv/black'             "Black code formatter
