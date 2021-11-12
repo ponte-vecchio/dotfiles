@@ -161,3 +161,31 @@ fi
 if type nvidia-smi &> /dev/null; then
     alias nvidia-smi="watch -n 0.25 nvidia-smi"
 fi
+
+# command not found handling from pkgfile
+PACMAN_DISTS=("arch endeavouros garuda kaos manjaro")
+DISTNAME=$(cat /etc/os-release | grep "^ID=" | sed "s/ID=//")
+
+_isin () {
+    echo "$!" | tr " " "\n" | grep -F -x -q "$2"
+}
+
+if ! _isin "${DISTNAME}" "${PACMAN_DISTS}"; then
+    if ! type pkgfile &> /dev/null; then
+        sudo pacman -Syu pkgfile && sudo pkgfile --update
+    elif [[ -f "/usr/share/doc/pkgfile/command-not-found.bash" ]]; then
+        source /usr/share/doc/pkgfile/command-not-found.bash
+    fi
+fi
+
+# >>> pacman & AUR init >>>
+if type paru &> /dev/null; then
+    paru
+elif type yay &> /dev/null; then
+    yay -Syu
+fi
+
+if type flatpak &> /dev/null; then
+    sudo flatpak update
+fi
+# <<< pacman & AUR init <<<
