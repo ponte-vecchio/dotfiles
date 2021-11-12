@@ -78,8 +78,9 @@ Plug 'lervag/vimtex'          "LaTeX on Vim
 Plug 'dense-analysis/ale'     "Generic autocompletion
 
 " QoL
-Plug 'preservim/nerdtree'     "FS Explorer for Vim
-Plug 'itchyny/lightline.vim'  "Lightline↵
+Plug 'preservim/nerdtree'           "FS Explorer for Vim
+Plug 'itchyny/lightline.vim'        "Lightline
+Plug 'iamcco/markdown-preview.nvim' "Markdown Preview
 
 " Python plugins
 Plug 'ambv/black'             "Black code formatter
