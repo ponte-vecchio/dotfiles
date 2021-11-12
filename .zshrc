@@ -51,17 +51,18 @@ _isin () {  # Check if item in list
 # <<< Functions <<<
 
 # >>> Aliases >>>
-alias cp='cp -i'
-alias df='df -h'
-alias diff='diff --color=auto'
-alias egrep='egrep --colour=auto'
-alias fgrep='fgrep --colour=auto'
-alias free='free -m'
-alias grep='grep --colour=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
-alias ls='ls --color=auto --group-directories-first'
-alias more='less'
-alias np='nano -w PKGBUILD'
-alias tree='tree -aC -I .git --dirsfirst'
+alias cp="cp -i"
+alias df="df -h"
+alias diff="diff --color=auto"
+alias egrep="egrep --colour=auto"
+alias fgrep="fgrep --colour=auto"
+alias free="free -m"
+alias grep="grep --colour=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}"
+alias ls="ls --color=auto --group-directories-first"
+alias more="less"
+alias np="nano -w PKGBUILD"
+alias tree="tree -aC -I .git --dirsfirst"
+alias :q="exit"
 
 # niche aliases
 if type arp-scan &> /dev/null; then
