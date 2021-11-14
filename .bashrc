@@ -125,7 +125,7 @@ ex ()
       *.tar.bz2)   tar xjf $1   ;;
       *.tar.gz)    tar xzf $1   ;;
       *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1     ;;
+      *.rar)       unrar x $1   ;;
       *.gz)        gunzip $1    ;;
       *.tar)       tar xf $1    ;;
       *.tbz2)      tar xjf $1   ;;
@@ -164,13 +164,19 @@ fi
 
 # command not found handling from pkgfile
 PACMAN_DISTS=("arch endeavouros garuda kaos manjaro")
-DISTNAME=$(cat /etc/os-release | grep "^ID=" | sed "s/ID=//")
+
+case $(uname) in
+    Darwin)
+        DISTNAME="$(uname)";;
+    Linux)
+        DISTNAME='$(cat /etc/os-release | grep "^ID=" | sed "s/ID=//")';;
+esac
 
 _isin () {
     echo "$!" | tr " " "\n" | grep -F -x -q "$2"
 }
 
-if ! _isin "${DISTNAME}" "${PACMAN_DISTS}"; then
+if _isin "${DISTNAME}" "${PACMAN_DISTS}"; then
     if ! type pkgfile &> /dev/null; then
         sudo pacman -Syu pkgfile && sudo pkgfile --update
     elif [[ -f "/usr/share/doc/pkgfile/command-not-found.bash" ]]; then
@@ -179,13 +185,15 @@ if ! _isin "${DISTNAME}" "${PACMAN_DISTS}"; then
 fi
 
 # >>> pacman & AUR init >>>
-if type paru &> /dev/null; then
-    paru
-elif type yay &> /dev/null; then
-    yay -Syu
-fi
+if _isin "${DISTNAME}" "${PACMAN_DISTS}"; then
+    if type paru &> /dev/null; then
+        paru
+    elif type yay &> /dev/null; then
+        yay -Syu
+    fi
 
-if type flatpak &> /dev/null; then
-    sudo flatpak update
+    if type flatpak &> /dev/null; then
+        sudo flatpak update
+    fi
 fi
 # <<< pacman & AUR init <<<
