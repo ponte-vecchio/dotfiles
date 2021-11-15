@@ -81,10 +81,16 @@ Plug 'rust-lang/rust.vim'       "Support for Rust
 " QoL
 Plug 'preservim/nerdtree'       "FS Explorer for Vim
 Plug 'itchyny/lightline.vim'    "Lightline
+
+" Markdown Stuff
 Plug 'iamcco/markdown-preview.nvim', { 
             \ 'do': { -> mkdp#util#install() },
             \ 'for': ['markdown', 'vim-plug']
             \}                  "Markdown Preview
+Plug 'neoclide/coc.nvim', { 
+            \ 'branch': 'release'
+            \}                  "Coc LSP
+Plug 'mzlogin/vim-markdown-toc' "Markdown TOC Generator
 
 " Python plugins
 Plug 'ambv/black'               "Black code formatter
