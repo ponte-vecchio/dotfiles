@@ -1,0 +1,247 @@
+# Window config
+window:
+#   dimensions:
+#     columns:  2
+#     lines:    0
+  
+  opacity:    0.5
+
+  dynamic_title:  true
+  gtk_theme_variant:  'dark'
+
+dynamic_title: true
+
+# Font config
+font:
+  normal:
+    family:   jetbrains mono
+    style:    Semibold
+
+  bold:
+    family:   jetbrains mono
+    style:    ExtraBold
+
+  italic:
+    family:   jetbrains mono
+    style:    Semibold Italic
+
+  size:       13.0
+
+# If `true` bfseries will use bright colour variants
+draw_bold_text_with_bright_colors:  true
+
+key_bindings:
+  - { key:    V,
+      mods:   Control|Shift,
+      action: Paste
+    }
+  - { key:    C,
+      mods:   Control|Shift,
+      action: Copy
+    }
+  - {
+      key:    Equals,
+      mods:   Control,
+      action: IncreaseFontSize
+    }
+  - {
+      key:    Plus,
+      mods:   Control,
+      action: IncreaseFontSize
+    }
+  - {
+      key:    Minus,
+      mods:   Control,
+      action: DecreaseFontSize
+    }
+  - {
+      key:    L,
+      mods:   Control,
+      action: ClearLogNotice
+    }
+  - {
+      key:    F11,
+      mods:   None,
+      action: ToggleFullscreen
+    }
+  - {
+      key:    H,
+      mods:   Control,
+      action: Hide
+    }
+  - {
+      key:    M,
+      mods:   Control,
+      action: Minimize
+    }
+# Colours Palette
+# Colours are in hex format, represented by '0xOOOOOO' or '#000000'
+# Set schemes via &{scheme_name} and use via *{scheme_name}
+
+# SCHEMES
+# 
+#  ExampleTheme: &ExampleTheme
+#    primary:
+#      background:         '#1E2229'
+#      dim_background:     '#2E3439'
+#      bright_background:  '#0E0F11'
+#      foreground:         '#17A88B'
+#     dim_foreground:     '#149678'
+#     bright_foreground:  '#00BC96'
+#    normal:
+#      black:        '#1E2229'
+#      red:          '#ED1515'
+#      green:        '#44853A'
+#      yellow:       '#F67400'
+#      blue:         '#1D99F3'
+#      magenta:      '#9B59B6'
+#      cyan:         '#1ABC9C'
+#      white:        '#FCFCFC'
+#    bright:
+#      black:        '#7F8C8D'
+#      red:          '#C0392B'
+#      green:        '#55A649'
+#      yellow:       '#FDBC4B'
+#      blue:         '#3DAEE9'
+#      magenta:      '#8E43AD'
+#      cyan:         '#16A085'
+#      white:        '#FFFFFF'
+
+schemes:
+  ## Manjaro Breath
+  #https://gitlab.manjaro.org/artwork/themes/breath/-/blob/master/konsole/)
+  ManjaroBreathDark: &ManjaroBreathDark
+    primary:
+      background:         '#1E2229' # 30 34 41
+      dim_background:     '#2E3439' # 46 52 57
+      bright_background:  '#0E0F11' # 13 15 17
+      foreground:         '#17A88B' # 23 168 139
+      dim_foreground:     '#149678' # 20 150 120
+      bright_foreground:  '#00BC96' # 0 188 150
+    normal:
+      black:        '#1E2229' # 30 34 41
+      red:          '#ED1515' # 237 21 21
+      green:        '#44853A' # 68 133 58
+      yellow:       '#F67400' # 246 116 0
+      blue:         '#1D99F3' # 29 153 243
+      magenta:      '#9B59B6' # 155 89 182
+      cyan:         '#1ABC9C' # 26 188 156
+      white:        '#FCFCFC' # 252 252 252
+    bright:
+      black:        '#7F8C8D' # 127 140 141
+      red:          '#C0392B' # 192 57 43
+      green:        '#55A649' # 85 166 73
+      yellow:       '#FDBC4B' # 253 188 75
+      blue:         '#3DAEE9' # 61 174 233
+      magenta:      '#8E43AD' # 142 68 173
+      cyan:         '#16A085' # 22 160 133
+      white:        '#FFFFFF' # 255 255 255
+ 
+  ManjaroBreathSilverfox: &ManjaroBreathSilverfox
+    primary:
+      background:         '#1E2229' # 30 34 41
+      dim_background:     '#2E3439' # 46 52 57
+      bright_background:  '#0E0F11' # 13 15 17
+      foreground:         '#BBBBBB' # 187 187 187
+      dim_foreground:     '#AAAAAA' # 170 170 170
+      bright_foreground:  '#CCCCCC' # 204 204 204
+    normal:
+      black:        '#1E2229' # 30 34 41
+      red:          '#ED1515' # 237 21 21
+      green:        '#44853A' # 68 133 58
+      yellow:       '#F67400' # 246 116 0
+      blue:         '#1D99F3' # 29 153 243
+      magenta:      '#9B59B6' # 155 89 182
+      cyan:         '#1ABC9C' # 26 188 156
+      white:        '#FCFCFC' # 252 252 252
+    bright:
+      black:        '#7F8C8D' # 127 140 141
+      red:          '#C0392B' # 192 57 43
+      green:        '#55A649' # 85 166 73
+      yellow:       '#FDBC4B' # 253 188 75
+      blue:         '#3DAEE9' # 61 174 233
+      magenta:      '#8E43AD' # 142 68 173
+      cyan:         '#16A085' # 22 160 133
+      white:        '#FFFFFF' # 255 255 255
+
+  ManjaroBreathLight: &ManjaroBreathLight
+    primary:
+      background:         '#E8E8E8' # 232 232 232
+      dim_background:     '#DEDEDE' # 222 222 222
+      bright_background:  '#F2F2F2' # 242 242 242
+      foreground:         '#292F34' # 41 47 52
+      dim_foreground:     '#000000' # 0  0  0
+      bright_foreground:  '#3E474E' # 62 71 78
+    normal:
+      black:        '#E8E8E8' # 232 232 232
+      red:          '#ED1515' # 237 21 21 
+      green:        '#44853A' # 68 133 58
+      yellow:       '#F67400' # 246 116 0
+      blue:         '#1D99F3' # 29 153 243
+      magenta:      '#9B59B6' # 155 89 182
+      cyan:         '#1ABC9C' # 26 188 156
+      white:        '#FCFCFC' # 252 252 252
+    bright:
+      black:        '#7F8C8D' # 127 140 141
+      red:          '#C0392B' # 192 57 43
+      green:        '#55A649' # 85 166 73
+      yellow:       '#FDBC4B' # 253 188 75
+      blue:         '#3DAEE9' # 61 174 233
+      magenta:      '#8E43AD' # 142 68 173
+      cyan:         '#16A085' # 22 160 133
+      white:        '#FFFFFF' # 255 255 255
+
+  # Atom One
+  # https://github.com/monsonjeremy/onedark.nvim
+  AtomOneDark: &AtomOneDark
+    primary:
+      background:         '#282C34'
+      dim_background:     '#21252B'
+      bright_background:  '#393F4A'
+      foreground:         '#ABB2BF'
+      dim_foreground:     '#9A9A9A'
+      bright_foreground:  '#E6EFFF'
+    normal:
+      black:        '#1E2127'
+      red:          '#E86671'
+      green:        '#98C379'
+      yellow:       '#E5C07B'
+      blue:         '#61AFEF'
+      magenta:      '#C678DD'
+      cyan:         '#56B6C2'
+      white:        '#828791'
+    bright:
+      black:        '#5C6370'
+      red:          '#F65866'
+      green:        '#98C379'
+      yellow:       '#E2C08D'
+      blue:         '#61AFEF'
+      magenta:      '#C678DD'
+      cyan:         '#56B6C2'
+      white:        '#E6EFFF'
+
+  # Moe
+  MoeDark: &MoeDark 
+    primary:
+      background:         '#131313'
+      foreground:         '#788CA1'
+    normal:
+      black:        '#2B2B2B'
+      red:          '#FF5858'
+      green:        '#2FBEBC'
+      yellow:       '#3BAFE4'
+      blue:         '#FF5858'
+      magenta:      '#C679DD'
+      cyan:         '#FF6376'
+      white:        '#3E4F58'
+    bright:
+      black:        '#262626'
+      red:          '#FF597D'
+      green:        '#2FBEBC'
+      yellow:       '#369ECF'
+      blue:         '#FF6376'
+      magenta:      '#C678DD'
+      cyan:         '#FF6376'
+      white:        '#324047'
+
+colors: *MoeDark
