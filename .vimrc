@@ -15,7 +15,7 @@ set encoding=utf-8
 set modelines=0
 
 " Show line numbers
-set number
+" set number
 
 " Show file stats
 set ruler
@@ -54,11 +54,6 @@ map <leader><space> :let @/=''<cr> " clear search
 
 " Formatting
 map <leader>q gqip
-
-" Show indentatinos (tabs and spaces)
-set listchars=tab:⇥\ ,eol:↵ "space could be ␣
-set list
-map <leader>l :set list!<CR>
 
 " Install Vimplug if not exists
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -114,6 +109,6 @@ let g:ale_change_sign_column_color = 1  "default=0
 
 " COLORSCHEME CONFIG
 " See https://github.com/itchyny/lightline.vim/blob/master/colorscheme.md
-let g:lightline = {
-            \ 'colorscheme': 'darcula',
+ let g:lightline = {
+            \ 'colorscheme': 'onedark',
             \ } " solarized, PaperColor, one, darcula, nord, seoul256
