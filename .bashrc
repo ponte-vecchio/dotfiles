@@ -50,8 +50,10 @@ use_color=true
 # instead of using /etc/DIR_COLORS.  Try to use the external file
 # first to take advantage of user additions.  Use internal bash
 # globbing instead of external grep binary.
+
 safe_term=${TERM//[^[:alnum:]]/?}   # sanitize TERM
 match_lhs=""
+
 [[ -f ~/.dir_colors   ]] && match_lhs="${match_lhs}$(<~/.dir_colors)"
 [[ -f /etc/DIR_COLORS ]] && match_lhs="${match_lhs}$(</etc/DIR_COLORS)"
 [[ -z ${match_lhs}    ]] \
@@ -69,71 +71,67 @@ if ${use_color} ; then
         fi
     fi
 
+    # PS1
     if [[ ${EUID} == 0 ]] ; then
-        PS1="\[\033[34m\][ \[\033[1;33m\]\u\[\033[37m\] | \[\033[1;36m\]\h\[\033[37m\] | \[\033[32m\]\w\[\033[1;32m\]\[\033[32m\]\[\033[34m\] ]\n\[\033[2;35m\]bash \[\033[31m\]\$ \[\033[37m\]"
-#       PS1='\[\033[01;31m\][\h\[\033[01;36m\] \W\[\033[01;31m\]]\$\[\033[00m\] '
+        PS1="\[\033[34m\][ \[\033[1;33m\]\u\[\033[37m\] | \[\033[1;36m\]\h\[\033[37m\] | \[\033[32m\]\w\[\033[1;32m\]\[\033[32m\]\[\033[0;34m\] ]"
+        PS1+="\n\[\033[2;35m\]$(echo $0 | sed -e 's^/bin/^^')"
+        PS1+=" \[\033[01;$((31+!$?))m\]\$\[\033[00m\] "
     else
-        PS1="\[\033[34m\][ \[\033[1;33m\]\u\[\033[37m\] | \[\033[1;36m\]\h\[\033[37m\] | \[\033[32m\]\w\[\033[1;32m\]\[\033[32m\]\[\033[34m\] ]\n\[\033[2;35m\]bash \[\033[31m\]\$ \[\033[37m\]"
-#       PS1='\[\033[01;32m\][\u@\h\[\033[01;37m\] \W\[\033[01;32m\]]\$\[\033[00m\] '
+        PS1="\[\033[34m\][ \[\033[1;33m\]\u\[\033[37m\] | \[\033[1;36m\]\h\[\033[37m\] | \[\033[32m\]\w\[\033[1;32m\]\[\033[32m\]\[\033[0;34m\] ]"
+        PS1+="\n\[\033[2;35m\]$(echo $0 | sed -e 's^/bin/^^')"
+        PS1+=' \[\033[01;$((31+!$?))m\]\$\[\033[00m\] '
     fi
 
-    alias diff='diff --color=auto'
+    # COLOURED ALIASES
+    alias diff='diff --color=auto --suppress-common-lines'
     alias ls='ls --color=auto --group-directories-first'
     alias tree='tree -aC -I .git --dirsfirst'
     alias grep='grep --colour=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
     alias egrep='egrep --colour=auto'
     alias fgrep='fgrep --colour=auto'
 else
-    if [[ ${EUID} == 0 ]] ; then
-        # show root@ when we don't have colors
-        PS1='\u@\h \W \$ '
+    if [[ ${EUID} == 0 ]]; then
+        PS1="[ \u | \h | \W ]\n$(echo $0 | sed -e 's^/bin/^^') \$ "
     else
-        PS1='\u@\h \w \$ '
+        PS1="[ \u | \h | \w ]\n$(echo $0 | sed -e 's^/bin/^^') \$ "
     fi
+    # UNCOLOURED ALIASES
+    alias ls='ls --group-directories-first'
+    alias tree='tree -a -I .git --dirsfirst'
+    alias grep='grep --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 fi
 
 unset use_color safe_term match_lhs sh
 
-alias cp="cp -i"                          # confirm before overwriting something
-alias df='df -h'                          # human-readable sizes
-alias free='free -m'                      # show sizes in MB
-alias np='nano -w PKGBUILD'
-alias more=less
+alias cp="cp -i"        # confirm before overwriting something
+alias df='df -h'        # human-readable sizes
+alias free='free -m'    # show sizes in MB
+alias more=less         # this is obvious
 
 xhost +local:root > /dev/null 2>&1
 
 # Bash won't get SIGWINCH if another process is in the foreground.
-# Enable checkwinsize so that bash will check the terminal size when
-# it regains control.  #65623
-# http://cnswww.cns.cwru.edu/~chet/bash/FAQ (E11)
 shopt -s checkwinsize
-
 shopt -s expand_aliases
-
-# export QT_SELECT=4
-
-# Enable history appending instead of overwriting.  #139609
 shopt -s histappend
 
-#
-# # ex - archive extractor
-# # usage: ex <file>
-ex ()
+# Generic extractor
+extract ()
 {
   if [ -f $1 ] ; then
     case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1   ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
+      *.tar.bz2)   tar xjf $1;;
+      *.tar.gz)    tar xzf $1;;
+      *.bz2)       bunzip2 $1;;
+      *.rar)       unrar x $1;;
+      *.gz)        gunzip $1;;
+      *.tar)       tar xf $1;;
+      *.tbz2)      tar xjf $1;;
+      *.tgz)       tar xzf $1;;
+      *.zip)       unzip $1;;
       *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *)           echo "'$1' cannot be extracted via ex()" ;;
+      *.7z)        7z x $1;;
+      *)           echo "'$1' cannot be extracted!" ;;
     esac
   else
     echo "'$1' is not a valid file"
@@ -151,10 +149,6 @@ fi
 if [[ -d ~/gitstatus ]]; then
   GITSTATUS_LOG_LEVEL=DEBUG
   source ~/gitstatus/gitstatus.prompt.sh
-else
-  PS1="\[\033[34m\][ \[\033[1;33m\]\u\[\033[37m\] | \[\033[1;36m\]\h\[\033[37m\] | \[\033[32m\]\w\[\033[1;32m\]\[\033[32m\]\[\033[34m\] ]\n\[\033[2;35m\]bash"
-  PS1+=' \[\033[01;$((31+!$?))m\]\$\[\033[00m\] '  # green/red (success/error) $/# (normal/root)
-#  PS1+='\[\e]0;\u@\h: \w\a\]'                       # terminal title: user@host: dir
 fi
 
 # hook nvidia-smi to watch
@@ -162,20 +156,27 @@ if type nvidia-smi &> /dev/null; then
     alias nvidia-smi="watch -n 0.25 nvidia-smi"
 fi
 
-# command not found handling from pkgfile
+# Memory statistics
+if type vmstat &> /dev/null && type head &> /dev/null; then
+    alias memstat="vmstat -s --unit M | head"
+fi
+
+# Pacman-based distro things
 PACMAN_DISTS=("arch endeavouros garuda kaos manjaro")
 
 case $(uname) in
     Darwin)
         DISTNAME="$(uname)";;
     Linux)
-        DISTNAME='$(cat /etc/os-release | grep "^ID=" | sed "s/ID=//")';;
+        DISTNAME=$(cat /etc/os-release | grep "^ID=" | sed "s/ID=//");;
 esac
 
 _isin () {
-    echo "$!" | tr " " "\n" | grep -F -x -q "$2"
+    echo "$1" | tr " " "\n" | grep -F -x -q "$2"
 }
 
+# PKGFILE - Missing command handler
+## https://wiki.archlinux.org/title/pkgfile
 if _isin "${DISTNAME}" "${PACMAN_DISTS}"; then
     if ! type pkgfile &> /dev/null; then
         sudo pacman -Syu pkgfile && sudo pkgfile --update
@@ -183,17 +184,4 @@ if _isin "${DISTNAME}" "${PACMAN_DISTS}"; then
         source /usr/share/doc/pkgfile/command-not-found.bash
     fi
 fi
-
-# >>> pacman & AUR init >>>
-if _isin "${DISTNAME}" "${PACMAN_DISTS}"; then
-    if type paru &> /dev/null; then
-        paru
-    elif type yay &> /dev/null; then
-        yay -Syu
-    fi
-
-    if type flatpak &> /dev/null; then
-        sudo flatpak update
-    fi
-fi
-# <<< pacman & AUR init <<<
+ 
