@@ -244,4 +244,40 @@ schemes:
       cyan:         '#FF6376'
       white:        '#324047'
 
+  # Custom Blue and Brown
+  ScarboroughDark: &ScarboroughDark
+    primary:
+      background:         '#0F151B'
+      foreground:         '#C5CBD3'
+    normal:
+      black:        '#0F151B'
+      red:          '#066BA6'
+      green:        '#5B738C'
+      yellow:       '#017CC4'
+      blue:         '#6C89A3'
+      magenta:      '#0E8ED1'
+      cyan:         '#64ACE2'
+      white:        '#C5CBD3'
+    bright:
+      black:        '#898393'
+      red:          '#066BA6'
+      green:        '#5B738C'
+      yellow:       '#017CC4'
+      blue:         '#6C89A3'
+      magenta:      '#0E8ED1'
+      cyan:         '#64ACE2'
+      white:        '#C5CBD3'
+    dim:
+      black:        '#595363'
+      red:          '#063B86'
+      green:        '#3B435C'
+      yellow:       '#014CA4'
+      blue:         '#4C5993'
+      magenta:      '#0E5EB1'
+      cyan:         '#449CC3'
+      white:        '#A5ABB3'
+
+
+
+
 colors: *MoeDark
