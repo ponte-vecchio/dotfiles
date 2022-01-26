@@ -349,4 +349,28 @@ schemes:
       cyan:         '#5B93DA'
       white:        '#BCC5D4'
 
-colors: *KazeokaDark
+  # Ubuntu
+  UbuntuDark: &UbuntuDark
+    primary:
+      background:         '#2C001E'
+      foreground:         '#FFFFFF'
+    normal:
+      black:        '#2C001E'
+      red:          '#E95420'
+      green:        '#BEB8B2'
+      yellow:       '#F08763'
+      blue:         '#6E3C61'
+      magenta:      '#9F6986'
+      cyan:         '#ED764D'
+      white:        '#C6C1BB'
+    bright:
+      black:        '#6B4C61'
+      red:          '#F08763'
+      green:        '#CECAC5'
+      yellow:       '#F5B29B'
+      blue:         '#9E7D96'
+      magenta:      '#C19EB1'
+      cyan:         '#F29879'
+      white:        '#DAD7D3'
+
+colors: *UbuntuDark
