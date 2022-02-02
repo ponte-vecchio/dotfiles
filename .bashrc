@@ -162,7 +162,7 @@ if type vmstat &> /dev/null && type head &> /dev/null; then
 fi
 
 # Pacman-based distro things
-PACMAN_DISTS=("arch endeavouros garuda kaos manjaro")
+PACMAN_DISTS=("arch" "endeavouros" "garuda" " manjaro")
 
 case $(uname) in
     Darwin)
@@ -172,12 +172,15 @@ case $(uname) in
 esac
 
 _isin () {
-    echo "$1" | tr " " "\n" | grep -F -x -q "$2"
+    local e match="$1"
+    shift
+    for e; do [[ "$e" == "$match" ]] && return 0; done
+    return 1
 }
 
 # PKGFILE - Missing command handler
 ## https://wiki.archlinux.org/title/pkgfile
-if _isin "${DISTNAME}" "${PACMAN_DISTS}"; then
+if  _isin "$DISTNAME" "${PACMAN_DISTS[@]}"; then
     if ! type pkgfile &> /dev/null; then
         sudo pacman -Syu pkgfile && sudo pkgfile --update
     elif [[ -f "/usr/share/doc/pkgfile/command-not-found.bash" ]]; then
