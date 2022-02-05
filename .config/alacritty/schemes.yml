@@ -1,86 +1,3 @@
-# Window config
-window:
-#   dimensions:
-#     columns:  2
-#     lines:    0
-  
-  opacity:    1
-
-  dynamic_title:  true
-  gtk_theme_variant:  'dark'
-
-dynamic_title: true
-
-# Font config
-font:
-  normal:
-    family:   MesloLGS NF
-    style:    Regular
-
-  bold:
-    family:   MesloLGS NF
-    style:    Bold
-
-  italic:
-    family:   MesloLGS NF
-    style:    Italic
-
-  size:       9.0
-
-# If `true` bfseries will use bright colour variants
-draw_bold_text_with_bright_colors:  true
-
-key_bindings:
-  - { key:    V,
-      mods:   Control|Shift,
-      action: Paste
-    }
-  - { key:    C,
-      mods:   Control|Shift,
-      action: Copy
-    }
-  - {
-      key:    Equals,
-      mods:   Control,
-      action: IncreaseFontSize
-    }
-  - {
-      key:    Plus,
-      mods:   Control,
-      action: IncreaseFontSize
-    }
-  - {
-      key:    Minus,
-      mods:   Control,
-      action: DecreaseFontSize
-    }
-  - {
-      key:    L,
-      mods:   Control,
-      action: ClearLogNotice
-    }
-  - {
-      key:    F11,
-      mods:   None,
-      action: ToggleFullscreen
-    }
-  - {
-      key:    H,
-      mods:   Control,
-      action: Hide
-    }
-  - {
-      key:    M,
-      mods:   Control,
-      action: Minimize
-    }
-  - {
-      key:    T,
-      mods:   Control|Shift,
-      action: SpawnNewInstance
-    }
-
-# Colours Palette
 # Colours are in hex format, represented by '0xOOOOOO' or '#000000'
 # Set schemes via &{scheme_name} and use via *{scheme_name}
 
@@ -430,52 +347,52 @@ schemes:
   # Nord Dark
   # https://github.com/arcticicestudio/nord-alacritty
   NordDark: &NordDark
-    primary:
-      background:       '#2e3440'
-      foreground:       '#d8dee9'
-      dim_foreground:   '#a5abb6'
-    cursor:
-      text:             '#2e3440'
-      cursor:           '#d8dee9'
-    vi_mode_curor:
-      text:             '#2e3440'
-      cursor:           '#d8dee9'
-    selection:
-      text:             CellForeground
-      background:       '#4c566a'
-    search:
-      matches:
-        foreground:     CellBackground
-        background:     '#88c0d0'
-      bar:
-        foreground:     '#d8dee9'
-        background:     '#434c5e'
-    normal:
-      black:        '#3b4252'
-      red:          '#bf616a'
-      green:        '#a3be8c'
-      yellow:       '#ebcb8b'
-      blue:         '#81a1c1'
-      magenta:      '#b48ead'
-      cyan:         '#88c0d0'
-      white:        '#e5e9f0'
-    bright:
-      black:        '#4c566a'
-      red:          '#bf616a'
-      green:        '#a3be8c'
-      yellow:       '#ebcb8b'
-      blue:         '#81a1c1'
-      magenta:      '#b48ead'
-      cyan:         '#88c0d0'
-      white:        '#e5e9f0'
-    dim:
-      black:        '#373e4d'
-      red:          '#94545d'
-      green:        '#809575'
-      yellow:       '#b29e75'
-      blue:         '#68809a'
-      magenta:      '#8c738c'
-      cyan:         '#6d96a5'
-      white:        '#aeb3bb'
-        
+     primary:
+       background:       '#2e3440'
+       foreground:       '#d8dee9'
+       dim_foreground:   '#a5abb6'
+     cursor:
+       text:             '#2e3440'
+       cursor:           '#d8dee9'
+     vi_mode_curor:
+       text:             '#2e3440'
+       cursor:           '#d8dee9'
+     selection:
+       text:             CellForeground
+       background:       '#4c566a'
+     search:
+       matches:
+         foreground:     CellBackground
+         background:     '#88c0d0'
+       bar:
+         foreground:     '#d8dee9'
+         background:     '#434c5e'
+     normal:
+       black:        '#3b4252'
+       red:          '#bf616a'
+       green:        '#a3be8c'
+       yellow:       '#ebcb8b'
+       blue:         '#81a1c1'
+       magenta:      '#b48ead'
+       cyan:         '#88c0d0'
+       white:        '#e5e9f0'
+     bright:
+       black:        '#4c566a'
+       red:          '#bf616a'
+       green:        '#a3be8c'
+       yellow:       '#ebcb8b'
+       blue:         '#81a1c1'
+       magenta:      '#b48ead'
+       cyan:         '#88c0d0'
+       white:        '#e5e9f0'
+     dim:
+       black:        '#373e4d'
+       red:          '#94545d'
+       green:        '#809575'
+       yellow:       '#b29e75'
+       blue:         '#68809a'
+       magenta:      '#8c738c'
+       cyan:         '#6d96a5'
+       white:        '#aeb3bb'
+
 colors: *NordDark
