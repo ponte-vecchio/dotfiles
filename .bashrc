@@ -35,7 +35,7 @@ colors() {
 
 # Change the window title of X terminals
 case ${TERM} in
-    xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
+    xterm*|rxvt*|alacritty*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
         PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
         ;;
     screen*)
@@ -72,15 +72,9 @@ if ${use_color} ; then
     fi
 
     # PS1
-    if [[ ${EUID} == 0 ]] ; then
-        PS1="\[\033[34m\][ \[\033[1;33m\]\u\[\033[37m\] | \[\033[1;36m\]\h\[\033[37m\] | \[\033[32m\]\w\[\033[1;32m\]\[\033[32m\]\[\033[0;34m\] ]"
-        PS1+="\n\[\033[2;35m\]$(echo $0 | sed -e 's^/bin/^^')"
-        PS1+=" \[\033[01;$((31+!$?))m\]\$\[\033[00m\] "
-    else
-        PS1="\[\033[34m\][ \[\033[1;33m\]\u\[\033[37m\] | \[\033[1;36m\]\h\[\033[37m\] | \[\033[32m\]\w\[\033[1;32m\]\[\033[32m\]\[\033[0;34m\] ]"
-        PS1+="\n\[\033[2;35m\]$(echo $0 | sed -e 's^/bin/^^')"
-        PS1+=' \[\033[01;$((31+!$?))m\]\$\[\033[00m\] '
-    fi
+    PS1="\[\033[34m\][ \[\033[1;33m\]\u\[\033[37m\] | \[\033[1;36m\]\h\[\033[37m\] | \[\033[32m\]\w\[\033[1;32m\]\[\033[32m\]\[\033[0;34m\] ]"
+	PS1+="\n\[\033[2;35m\]$(echo $0 | sed -e 's^/bin/^^')"
+    PS1+=" \[\033[01;$((31+!$?))m\]\$\[\033[00m\] "
 
     # COLOURED ALIASES
     alias diff='diff --color=auto --suppress-common-lines'
@@ -162,7 +156,7 @@ if type vmstat &> /dev/null && type head &> /dev/null; then
 fi
 
 # Pacman-based distro things
-PACMAN_DISTS=("arch" "endeavouros" "garuda" " manjaro")
+PACMAN_DISTS=("arch" "endeavouros" "garuda" "manjaro")
 
 case $(uname) in
     Darwin)
@@ -187,4 +181,13 @@ if  _isin "$DISTNAME" "${PACMAN_DISTS[@]}"; then
         source /usr/share/doc/pkgfile/command-not-found.bash
     fi
 fi
- 
+
+
+if [ -f ~/gitstatus/gitstatus.prompt.sh ]; then
+	source ~/gitstatus/gitstatus.prompt.sh
+else
+	if [ ! -d ~/gitstatus ]; then
+		git clone --depth=1 https://github.com/romkatv/gitstatus.git ~/gitstatus
+	source ~/gitstatus/gitstatus.prompt.sh
+	fi
+fi
