@@ -59,18 +59,20 @@ map <leader><space> :let @/=''<cr>	" clear search
 map <leader>q gqip
 
 " Install Vimplug if not exists
-if has('nvim') && empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
-
 if has('nvim') && empty(glob('~/.config/nvim/autoload/plug.vim'))
 	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+	\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+elseif has('vim') && empty(glob('~/.vim/autoload/plug.vim'))
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
 	\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
 " Plugins
-call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+if has('nvim')
+	call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.config/nvim/plugged')
+else
+	call plug#begin(has('vim') ? stdpath('data') . '/plugged' : '~/.vim/plugged/')
+endif
 
 " Call plugins
 Plug 'tpope/vim-sensible'       "Basic amenities for Vim
