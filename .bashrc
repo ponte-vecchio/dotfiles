@@ -5,7 +5,17 @@
 [[ $- != *i* ]] && return
 
 colors() {
-    local fgc bgc vals seq0
+    if [[ ! -z $1 ]]; then
+		local outp=${1:0:4}
+	else
+		local outp=TEXT
+	fi
+	if [[ -f $HOME/.config/alacritty/schemes.yml ]]; then
+		local alacritty_curr_theme=$(cat $HOME/.config/alacritty/schemes.yml | tail -n 1 | sed -e "s/colors: \*//g")
+		echo "Current Theme: ${alacritty_curr_theme}"
+	fi
+
+	local fgc bgc vals seq0
 
     printf "Color escapes are %s\n" '\e[${value};...;${value}m'
     printf "Values 30..37 are \e[33mforeground colors\e[m\n"
@@ -24,8 +34,8 @@ colors() {
 
             seq0="${vals:+\e[${vals}m}"
             printf "  %-9s" "${seq0:-(default)}"
-            printf " ${seq0}TEXT\e[m"
-            printf " \e[${vals:+${vals+$vals;}}1mBOLD\e[m"
+            printf " ${seq0}${outp}\e[m"
+            printf " \e[${vals:+${vals+$vals;}}1m${outp}\e[m"
         done
         echo; echo
     done
@@ -95,6 +105,14 @@ else
     alias grep='grep --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 fi
 
+if [[ $(uname) = "Darwin" ]]; then
+    alias diff="diff --suppress-common-lines"
+    alias ls="ls --color=auto"
+    alias tree="tree -aC -I .git --dirsfirst"
+    alias grep="grep --exclude=dir={.bzr,CVS,.git,.hg,.svn}"
+	alias lsd="lsd -la"
+fi
+
 unset use_color safe_term match_lhs sh
 
 alias cp="cp -i"        # confirm before overwriting something
@@ -161,7 +179,7 @@ PACMAN_DISTS=("arch" "endeavouros" "garuda" "manjaro")
 case $(uname) in
     Darwin)
         DISTNAME="$(uname)";;
-    Linux)
+    Linux|GNU*)
         DISTNAME=$(cat /etc/os-release | grep "^ID=" | sed "s/ID=//");;
 esac
 
@@ -182,7 +200,7 @@ if  _isin "$DISTNAME" "${PACMAN_DISTS[@]}"; then
     fi
 fi
 
-
+# GITSTATUS
 if [ -f ~/gitstatus/gitstatus.prompt.sh ]; then
 	source ~/gitstatus/gitstatus.prompt.sh
 else
@@ -191,3 +209,4 @@ else
 	source ~/gitstatus/gitstatus.prompt.sh
 	fi
 fi
+
