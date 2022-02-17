@@ -33,7 +33,7 @@
 schemes:
   ## Manjaro Breath
   #https://gitlab.manjaro.org/artwork/themes/breath/-/blob/master/konsole/)
-  ManjaroBreathDark: &ManjaroBreathDark
+  BreezeDark: &BreezeDark
     primary:
       background:         '#1E2229' # 30 34 41
       dim_background:     '#2E3439' # 46 52 57
@@ -60,7 +60,7 @@ schemes:
       cyan:         '#16A085' # 22 160 133
       white:        '#FFFFFF' # 255 255 255
  
-  ManjaroBreathSilverfox: &ManjaroBreathSilverfox
+  BreezeSilverfox: &BreezeSilverfox
     primary:
       background:         '#1E2229' # 30 34 41
       dim_background:     '#2E3439' # 46 52 57
@@ -87,7 +87,7 @@ schemes:
       cyan:         '#16A085' # 22 160 133
       white:        '#FFFFFF' # 255 255 255
 
-  ManjaroBreathLight: &ManjaroBreathLight
+  BreezeLight: &BreezeLight
     primary:
       background:         '#E8E8E8' # 232 232 232
       dim_background:     '#DEDEDE' # 222 222 222
@@ -142,6 +142,54 @@ schemes:
       magenta:      '#C678DD'
       cyan:         '#56B6C2'
       white:        '#E6EFFF'
+
+  # Ayu Dark
+  AyuDark:  &AyuDark
+    primary:
+      background:   '#0A0E14'
+      foreground:   '#B3B1AD'
+    normal:
+      black:        '#01060E'
+      red:          '#EA6C73'
+      green:        '#91B362'
+      yellow:       '#F9AF4F'
+      blue:         '#53BDFA'
+      magenta:      '#FAE994'
+      cyan:         '#90E1C6'
+      white:        '#C7C7C7'
+    bright:
+      black:        '#686868'
+      red:          '#F07178'
+      green:        '#C2D94C'
+      yellow:       '#FFB454'
+      blue:         '#59C2FF'
+      magenta:      '#FFEE99'
+      cyan:         '#95E6CB'
+      white:        '#FFFFFF'
+
+  # Ayu Mirage
+  AyuMirage: &AyuMirage
+    primary:
+      background: '#202734'
+      foreground: '#CBCCC6'
+    normal:
+      black:      '#191E2A'
+      red:        '#FF3333'
+      green:      '#BAE67E'
+      yellow:     '#FFA759'
+      blue:       '#73D0FF'
+      magenta:    '#FFD580'
+      cyan:       '#95E6CB'
+      white:      '#C7C7C7'
+    bright:
+      black:      '#686868'
+      red:        '#F27983'
+      green:      '#A6CC70'
+      yellow:     '#FFCC66'
+      blue:       '#5CCFE6'
+      magenta:    '#FFEE99'
+      cyan:       '#95E6CB'
+      white:      '#FFFFFF'
 
   # Moe
   MoeDark: &MoeDark 
@@ -296,54 +344,6 @@ schemes:
       cyan:         '#F29879'
       white:        '#DAD7D3'
 
-  # Ayu Dark
-  AyuDark:  &AyuDark
-    primary:
-      background:   '#0A0E14'
-      foreground:   '#B3B1AD'
-    normal:
-      black:        '#01060E'
-      red:          '#EA6C73'
-      green:        '#91B362'
-      yellow:       '#F9AF4F'
-      blue:         '#53BDFA'
-      magenta:      '#FAE994'
-      cyan:         '#90E1C6'
-      white:        '#C7C7C7'
-    bright:
-      black:        '#686868'
-      red:          '#F07178'
-      green:        '#C2D94C'
-      yellow:       '#FFB454'
-      blue:         '#59C2FF'
-      magenta:      '#FFEE99'
-      cyan:         '#95E6CB'
-      white:        '#FFFFFF'
-
-  # Ayu Mirage
-  AyuMirage: &AyuMirage
-    primary:
-      background: '#202734'
-      foreground: '#CBCCC6'
-    normal:
-      black:      '#191E2A'
-      red:        '#FF3333'
-      green:      '#BAE67E'
-      yellow:     '#FFA759'
-      blue:       '#73D0FF'
-      magenta:    '#FFD580'
-      cyan:       '#95E6CB'
-      white:      '#C7C7C7'
-    bright:
-      black:      '#686868'
-      red:        '#F27983'
-      green:      '#A6CC70'
-      yellow:     '#FFCC66'
-      blue:       '#5CCFE6'
-      magenta:    '#FFEE99'
-      cyan:       '#95E6CB'
-      white:      '#FFFFFF'
-
   # Nord Dark
   # https://github.com/arcticicestudio/nord-alacritty
   NordDark: &NordDark
@@ -395,4 +395,45 @@ schemes:
        cyan:         '#6d96a5'
        white:        '#aeb3bb'
 
-colors: *NordDark
+  # Radical
+  Radical: &Radical
+     primary:
+       background:       '#141322'
+       foreground:       '#A0CDCF'
+       dim_foreground:   '#A0CDCF'
+     cursor:
+       text:             '#F7D338'
+       cursor:           '#FE3282'
+     vi_mode_curor:
+       text:             '#F7D338'
+       cursor:           '#FE3282'
+     selection:
+       text:             '#FE3282'
+       background:       '#F7D338'
+     search:
+       matches:
+         foreground:     CellBackground
+         background:     '#88c0d0'
+       bar:
+         foreground:     '#d8dee9'
+         background:     '#434c5e'
+     normal:
+       black:        '#1F216F'
+       red:          '#FF448A'
+       green:        '#D3FF3F'
+       yellow:       '#FFFC72'
+       blue:         '#2C2DE4'
+       magenta:      '#F853B1'
+       cyan:         '#B2F6FC'
+       white:        '#C9EEE6'
+     bright:
+       black:        '#290CAD'
+       red:          '#FF326F'
+       green:        '#C2FF00'
+       yellow:       '#F7D338'
+       blue:         '#0C19AE'
+       magenta:      '#D02583'
+       cyan:         '#A0FEF7'
+       white:        '#C5FFF0'
+
+colors: *Radical
