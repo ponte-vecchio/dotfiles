@@ -97,7 +97,7 @@ function gitstatus_prompt_update() {
 	GITSTATUS_PROMPT="${clean}[${nf_gitbranch}${p}${reset}"
 }
 
-# Start gitstatusd in the background.
+# Start gitstatusd daemon in the background.
 gitstatus_stop && gitstatus_start -s -1 -u -1 -c -1 -d -1
 
 # On every prompt, fetch git status and set GITSTATUS_PROMPT.
