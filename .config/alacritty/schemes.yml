@@ -5,30 +5,30 @@
 # 
 #  ExampleTheme: &ExampleTheme
 #    primary:
-#      background:         '#1E2229'
-#      dim_background:     '#2E3439'
-#      bright_background:  '#0E0F11'
-#      foreground:         '#17A88B'
-#     dim_foreground:     '#149678'
-#     bright_foreground:  '#00BC96'
+#      background:        '#'
+#      dim_background:    '#'
+#      bright_background: '#'
+#      foreground:        '#'
+#     dim_foreground:     '#'
+#     bright_foreground:  '#'
 #    normal:
-#      black:        '#1E2229'
-#      red:          '#ED1515'
-#      green:        '#44853A'
-#      yellow:       '#F67400'
-#      blue:         '#1D99F3'
-#      magenta:      '#9B59B6'
-#      cyan:         '#1ABC9C'
-#      white:        '#FCFCFC'
+#      black:        '#'
+#      red:          '#'
+#      green:        '#'
+#      yellow:       '#'
+#      blue:         '#'
+#      magenta:      '#'
+#      cyan:         '#'
+#      white:        '#'
 #    bright:
-#      black:        '#7F8C8D'
-#      red:          '#C0392B'
-#      green:        '#55A649'
-#      yellow:       '#FDBC4B'
-#      blue:         '#3DAEE9'
-#      magenta:      '#8E43AD'
-#      cyan:         '#16A085'
-#      white:        '#FFFFFF'
+#      black:        '#'
+#      red:          '#'
+#      green:        '#'
+#      yellow:       '#'
+#      blue:         '#'
+#      magenta:      '#'
+#      cyan:         '#'
+#      white:        '#'
 
 schemes:
   ## Manjaro Breath
@@ -436,4 +436,32 @@ schemes:
        cyan:         '#A0FEF7'
        white:        '#C5FFF0'
 
-colors: *Radical
+  # Shizuka
+  Shizuka: &Shizuka
+    primary:
+      background:         '#151219'
+      dim_background:     '#151219'
+      bright_background:  '#151219'
+      foreground:         '#EADCE3'
+      dim_foreground:     '#EADCE3'
+      bright_foreground:  '#EADCE3'
+    normal:
+      black:        '#151219'
+      red:          '#A18E95'
+      green:        '#D195A4'
+      yellow:       '#C99F9C'
+      blue:         '#E0C3AA'
+      magenta:      '#CEB3D7'
+      cyan:         '#E1C0D7'
+      white:        '#EADCE3'
+    bright:
+      black:        '#9C9097'
+      red:          '#A18E95'
+      green:        '#D195A4'
+      yellow:       '#C99F9C'
+      blue:         '#E0C3AA'
+      magenta:      '#CEB3D7'
+      cyan:         '#E1C0D7'
+      white:        '#EADCE3'
+
+colors: *Shizuka
