@@ -2,7 +2,7 @@
 set nocompatible					" Vim only, no Vi
 filetype off						" force plugins to load
 filetype plugin indent on			" force indent on
-syntax on							" Turn on syntax highlighting
+" syntax on							" Turn on syntax highlighting
 set encoding=utf-8					" Use utf-8 encoding
 set modelines=0						" Disable modelines
 " set number						" Turn on line numbers
@@ -62,7 +62,8 @@ map <leader>q gqip
 if has('nvim') && empty(glob('~/.config/nvim/autoload/plug.vim'))
 	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
 	\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-elseif has('vim') && empty(glob('~/.vim/autoload/plug.vim'))
+endif
+if has('vim') && empty(glob('~/.vim/autoload/plug.vim'))
 	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
 	\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
@@ -80,7 +81,7 @@ Plug 'tpope/vim-fugitive'       "Git wrapper
 " Plug 'junegunn/seoul256.vim'    "256 Colors of Seoul
 " Plug 'joshdick/onedark.vim'     "Atom's One Dark theme
 Plug 'lervag/vimtex'            "LaTeX on Vim
-Plug 'dense-analysis/ale'       "Generic autocompletion
+" Plug 'dense-analysis/ale'       "Generic autocompletion
 Plug 'rust-lang/rust.vim'       "Support for Rust
 Plug 'neoclide/coc.nvim', { 
             \ 'branch': 'release'
@@ -106,16 +107,16 @@ Plug 'github/copilot.vim'       "Github Copilot
 call plug#end()
 
 "  completion config
-let g:ale_completion_enabled = 1  "default=0
-let g:ale_completion_max_suggestions = 20  "default=50
+" let g:ale_completion_enabled = 1  "default=0
+" let g:ale_completion_max_suggestions = 20  "default=50
 
 " ALE linter selection
-let g:ale_fixers = {
-\ '*': ['remove_trailing_lines', 'trim_whitespace'],
-\ 'python': ['flake8']
-\}
+" let g:ale_fixers = {
+" \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+" \ 'python': ['flake8']
+" \}
 " ALE change colour on error
-let g:ale_change_sign_column_color = 1  "default=0
+" let g:ale_change_sign_column_color = 1  "default=0
 
 function! CocCurrentFunction()
     return get(b:, 'coc_current_function', '')
@@ -145,7 +146,7 @@ let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 
 " Custom TeX Compiler
 let g:vimtex_compiler_generic = {
-	\ 'command': 'dotheluaffs',
+	\ 'command': 'latexmk',
 	\ 'executable' : 'latexmk',
 	\ 'options': [
 	\	'-lualatex',
@@ -155,4 +156,4 @@ let g:vimtex_compiler_generic = {
 	\],
 	\}
 
-let g:vimtex_compiler_method='generic'
+let g:vimtex_compiler_method='latexmk'

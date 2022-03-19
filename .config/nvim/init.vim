@@ -77,10 +77,8 @@ endif
 " Call plugins
 Plug 'tpope/vim-sensible'       "Basic amenities for Vim
 Plug 'tpope/vim-fugitive'       "Git wrapper
-" Plug 'junegunn/seoul256.vim'    "256 Colors of Seoul
-" Plug 'joshdick/onedark.vim'     "Atom's One Dark theme
 Plug 'lervag/vimtex'            "LaTeX on Vim
-Plug 'dense-analysis/ale'       "Generic autocompletion
+" Plug 'dense-analysis/ale'       "Generic autocompletion
 Plug 'rust-lang/rust.vim'       "Support for Rust
 Plug 'neoclide/coc.nvim', { 
             \ 'branch': 'release'
@@ -97,7 +95,6 @@ Plug 'iamcco/markdown-preview.nvim', {
             \}                  "Markdown Preview
 Plug 'mzlogin/vim-markdown-toc' "Markdown TOC Generator
 
-" B
 " Python plugins
 Plug 'ambv/black'               "Black code formatter
 Plug 'tmhedberg/simpylfold'     "Code folding
@@ -110,12 +107,12 @@ let g:ale_completion_enabled = 1  "default=0
 let g:ale_completion_max_suggestions = 20  "default=50
 
 " ALE linter selection
-let g:ale_fixers = {
-\ '*': ['remove_trailing_lines', 'trim_whitespace'],
-\ 'python': ['flake8']
-\}
+" let g:ale_fixers = {
+" \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+" \ 'python': ['flake8']
+" \}
 " ALE change colour on error
-let g:ale_change_sign_column_color = 1  "default=0
+" let g:ale_change_sign_column_color = 1  "default=0
 
 function! CocCurrentFunction()
     return get(b:, 'coc_current_function', '')
@@ -139,13 +136,13 @@ let g:lightline = {
     \ },
     \ }
 
-" Use Okular if linux
+" Use Okular
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 
-" Custom TeX Compiler
+" Preferred TeX Compiler
 let g:vimtex_compiler_generic = {
-	\ 'command': 'dotheluaffs',
+	\ 'command': 'latexmk',
 	\ 'executable' : 'latexmk',
 	\ 'options': [
 	\	'-lualatex',
@@ -155,4 +152,4 @@ let g:vimtex_compiler_generic = {
 	\],
 	\}
 
-let g:vimtex_compiler_method='generic'
+let g:vimtex_compiler_method='latexmk'
