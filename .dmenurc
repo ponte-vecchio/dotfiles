@@ -1,0 +1,6 @@
+#
+# ~/.dmenurc
+#
+
+## Font
+DMENU_FN="FantasqueSansMonoNerdFont 14.0"
