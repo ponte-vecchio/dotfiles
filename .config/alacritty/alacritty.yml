@@ -4,28 +4,28 @@ window:
 #     columns:  2
 #     lines:    0
   
-  opacity:    1
+  opacity:            0.7
+  dynamic_title:      true
+  gtk_theme_variant:  None
+  startup_mode:       Windowed
 
-  dynamic_title:  true
-  gtk_theme_variant:  'dark'
-
-dynamic_title: true
 
 # Font config
 font:
   normal:
-    family:   MesloLGS NF
-    style:    Regular
+    family:   SF Mono
+    style:    Medium
 
   bold:
-    family:   MesloLGS NF
+    family:   SF Mono
     style:    Bold
 
   italic:
-    family:   MesloLGS NF
+    family:   SF Mono
     style:    Italic
 
-  size:       9.0
+  size:       12.0
+  builtin_box_drawing: true
 
 # If `true` bfseries will use bright colour variants
 draw_bold_text_with_bright_colors:  true
