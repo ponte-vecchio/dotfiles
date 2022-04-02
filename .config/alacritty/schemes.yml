@@ -464,4 +464,27 @@ schemes:
       cyan:         '#E1C0D7'
       white:        '#EADCE3'
 
-colors: *Shizuka
+  Chameleon: &Chameleon
+    primary:
+      background:        '#173f4f'
+      foreground:        '#dceec8'
+    normal:
+      black:        '#173f4f'
+      red:          '#dc3545'
+      green:        '#73ba25'
+      yellow:       '#ffc107'
+      blue:         '#38ade2'
+      magenta:      '#1aad95'
+      cyan:         '#4ac0b4'
+      white:        '#ffffff'
+    bright:
+      black:        '#343a40'
+      red:          '#dc3545'
+      green:        '#6da741'
+      yellow:       '#ffc107'
+      blue:         '#21a4df'
+      magenta:      '#81c13b'
+      cyan:         '#00a489'
+      white:        '#ffffff'
+
+colors: *Chameleon
