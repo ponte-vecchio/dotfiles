@@ -33,18 +33,14 @@ set noshiftround
 set title
 
 " Extension-specific Whitespacing
-au BufNewFile,BufRead *.c,*.h	set tw=109
-au BufNewFile,BufRead *.xml		set tw=109	shiftwidth=2 smarttab
-au BufNEwFile,BufRead *.yml		set tw=109	shiftwidth=2 smarttab
-au FileType sh					set tw=80	shiftwidth=4 smarttab
-au FileType c					set tw=109
-au FileType h					set tw=109
-au FileType tex,cls,sty			set tw=109
-
-
-" Rendering
-set ttyfast
-
+au BufNewFile,BufRead *.c,*.h		set tw=109
+au BufNewFile,BufRead *.xml			set tw=109	shiftwidth=2
+au BufNewFile,BufRead *.yml			set tw=109	shiftwidth=2
+au BufNewFile,BufRead *.txsprofile	set tw=80	shiftwidth=2	filetype=dosini
+au FileType sh						set tw=80	shiftwidth=4
+au FileType c						set tw=109
+au FileType h						set tw=109
+au FileType tex,cls,sty,dtx			set tw=109
 
 " Searching
 nnoremap / /\v
@@ -59,64 +55,46 @@ map <leader><space> :let @/=''<cr>	" clear search
 map <leader>q gqip
 
 " Install Vimplug if not exists
-if has('nvim') && empty(glob('~/.config/nvim/autoload/plug.vim'))
-	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-	\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
 if has('vim') && empty(glob('~/.vim/autoload/plug.vim'))
 	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
 	\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
 " Plugins
-if has('nvim')
-	call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.config/nvim/plugged')
-else
-	call plug#begin(has('vim') ? stdpath('data') . '/plugged' : '~/.vim/plugged/')
-endif
+call plug#begin(has('vim') ? stdpath('data') . '/plugged' : '~/.vim/plugged/')
 
-" Call plugins
+" Vim Enhancements
+Plug 'ap/vim-css-color'			"Hex Color Preview
 Plug 'tpope/vim-sensible'       "Basic amenities for Vim
 Plug 'tpope/vim-fugitive'       "Git wrapper
-" Plug 'junegunn/seoul256.vim'    "256 Colors of Seoul
-" Plug 'joshdick/onedark.vim'     "Atom's One Dark theme
-Plug 'lervag/vimtex'            "LaTeX on Vim
-" Plug 'dense-analysis/ale'       "Generic autocompletion
-Plug 'rust-lang/rust.vim'       "Support for Rust
-Plug 'neoclide/coc.nvim', { 
-            \ 'branch': 'release'
-            \}                  "Coc LSP
-" QoL
 Plug 'preservim/nerdtree'       "FS Explorer for Vim
 Plug 'itchyny/lightline.vim'    "Lightline
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" Markdown Stuff
+" Language Agnostic Extensions
+Plug 'github/copilot.vim'       "Github Copilot
+Plug 'neoclide/coc.nvim', { 
+            \ 'branch': 'release'
+			\}                  "Coc LSP
+
+" Markdown
 Plug 'iamcco/markdown-preview.nvim', {
-            \ 'do': { -> mkdp#util#install() },
-            \ 'for': 'markdown'
+            \ 'do': 'call: mkdp#util#install()',
+            \ 'for': ['markdown', 'vim-plug']
             \}                  "Markdown Preview
 Plug 'mzlogin/vim-markdown-toc' "Markdown TOC Generator
 
-" B
-" Python plugins
+" Python
 Plug 'ambv/black'               "Black code formatter
 Plug 'tmhedberg/simpylfold'     "Code folding
-Plug 'github/copilot.vim'       "Github Copilot
+
+" Rust
+Plug 'rust-lang/rust.vim'       "Support for Rust
+
+" TeX
+Plug 'lervag/vimtex'            "LaTeX on Vim
 
 call plug#end()
-
-"  completion config
-" let g:ale_completion_enabled = 1  "default=0
-" let g:ale_completion_max_suggestions = 20  "default=50
-
-" ALE linter selection
-" let g:ale_fixers = {
-" \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-" \ 'python': ['flake8']
-" \}
-" ALE change colour on error
-" let g:ale_change_sign_column_color = 1  "default=0
 
 function! CocCurrentFunction()
     return get(b:, 'coc_current_function', '')
@@ -150,7 +128,6 @@ let g:vimtex_compiler_generic = {
 	\ 'executable' : 'latexmk',
 	\ 'options': [
 	\	'-lualatex',
-	\	'-c',
 	\	'--interaction=nonstopmode',
 	\	'-synctex=1',
 	\],
