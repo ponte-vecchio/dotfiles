@@ -11,7 +11,7 @@
 
 set $mod Mod1
 
-font pango:SF Pro Display Medium 10
+font pango:JetBrains Mono Nerd Font 10
 for_window [class="^.*"] border pixel 0
 smart_gaps on
 gaps inner 4
@@ -20,6 +20,7 @@ gaps outer 0
 # Autostart
 exec --no-startup-id ~/.fehbg
 exec --no-startup-id ibus-daemon -drxR
+exec --no-startup-id sh ~/.config/i3/i3scripts/bootchime.sh ~/src/chimes/win95.ogv
 exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
 
 # Start XDG autostart .desktop files using dex. See also
