@@ -487,4 +487,50 @@ schemes:
       cyan:         '#00a489'
       white:        '#ffffff'
 
-colors: *Chameleon
+  ChameleonLight: &ChameleonLight
+    primary:
+      background:        '#dceec8'
+      foreground:        '#173f4f'
+    normal:
+      black:        '#173f4f'
+      red:          '#dc3545'
+      green:        '#73ba25'
+      yellow:       '#ffc107'
+      blue:         '#38ade2'
+      magenta:      '#1aad95'
+      cyan:         '#4ac0b4'
+      white:        '#ffffff'
+    bright:
+      black:        '#343a40'
+      red:          '#dc3545'
+      green:        '#6da741'
+      yellow:       '#ffc107'
+      blue:         '#21a4df'
+      magenta:      '#81c13b'
+      cyan:         '#00a489'
+      white:        '#ffffff'
+
+  Papercolor: &Papercolor
+    primary:
+      background:   '#EEEEEE'
+      foreground:   '#444444'
+    normal:
+      black:        '#444444'
+      red:          '#D70000'
+      green:        '#D70087'
+      yellow:       '#8700AF'
+      blue:         '#D75F00'
+      magenta:      '#878787'
+      cyan:         '#005F87'
+      white:        '#BCBCBC'
+    bright:
+      black:        '#005E86'
+      red:          '#AF0000'
+      green:        '#008700'
+      yellow:       '#5F8700'
+      blue:         '#0087AF'
+      magenta:      '#878787'
+      cyan:         '#005FAF'
+      white:        '#BCBCBC'
+
+colors: *Papercolor
